@@ -20,16 +20,6 @@
       align-items: center;
     }
 
-    .box {
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-    }
-
     canvas {
       position: absolute;
       margin: auto;
@@ -85,10 +75,8 @@
 <!-- self create by LTP, fix viewport on mobile -->
 
 <body>
-  <div class="box">
-    <canvas id="particles"> </canvas>
-    <canvas id="text"> </canvas>
-  </div>
+  <canvas id="particles"> </canvas>
+  <canvas id="text"> </canvas>
   <!-- self create by LTP, fix viewport on mobile -->
   <script>
     var settings = {
