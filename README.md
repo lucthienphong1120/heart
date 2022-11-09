@@ -1,6 +1,10 @@
 # heart
 "THẮP SÁNG ANH, SƯỞI ẤM EM"
 
+https://ltp110.tk/heart/index.html
+
+https://ltp110.tk/heart/index2.html
+
 NETIZEN TRUNG ĐUA NHAU ĐU TREND TẠO HÌNH TRÁI TIM BẰNG MÃ CODE GIỐNG THỦ KHOA LÝ TRONG “THẮP SÁNG ANH, SƯỞI ẤM EM”
 
 Trong tập 5 của bộ phim “Thắp sáng anh, sưởi ấm em” (Chiếc bật lửa và váy công chúa) có một phân cảnh Lý Tuân vẽ hình trái tim hồng lấp lánh bum bun cho Chu Vận bằng mã code, rồi dụ cô tự giải mã đang khiến dân tình quắn quéo vì sự lãng mạn cộp mác thương hiệu của thủ khoa, học bá IT. 
