@@ -4,6 +4,7 @@
   <head>
     <title>heart</title>
     <meta charset="UTF-8">
+    <meta author="LTP">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- self create by LTP, fix viewport on mobile -->
     <style>
@@ -27,22 +28,26 @@
   </head>
 <!-- self create by LTP, fix viewport on mobile -->
   <body>
-    <canvas id="pinkboard"> </canvas>
+    <canvas id="heart"> </canvas>
+    <canvas id="text"> </canvas>
 <!-- self create by LTP, fix viewport on mobile -->
     <script>
       var settings = {
-        particles: {
-          length: 400, // maximum amount of particles
+        heart: {
+          length: 400, // maximum amount of heart
           duration: 2, // particle duration in sec
           velocity: 100, // particle velocity in pixels/sec
           effect: -0.85, // play with this for a nice effect
           size: 28, // particle size in pixels
+          color: "#ea80b0", // color of heart
         },
+        text: {
+          font: "25px Arial", // font text
+          color: "#ea80b0", // color of text
+          content: "Thiên Phong", // text content
+        }
       };
 
-      /*
-       * RequestAnimationFrame polyfill by Erik Möller
-       */
       (function () {
         var b = 0;
         var c = ["ms", "moz", "webkit", "o"];
@@ -113,8 +118,8 @@
           this.position.y = y;
           this.velocity.x = dx;
           this.velocity.y = dy;
-          this.acceleration.x = dx * settings.particles.effect;
-          this.acceleration.y = dy * settings.particles.effect;
+          this.acceleration.x = dx * settings.heart.effect;
+          this.acceleration.y = dy * settings.heart.effect;
           this.age = 0;
         };
         Particle.prototype.update = function (deltaTime) {
@@ -128,8 +133,8 @@
           function ease(t) {
             return --t * t * t + 1;
           }
-          var size = image.width * ease(this.age / settings.particles.duration);
-          context.globalAlpha = 1 - this.age / settings.particles.duration;
+          var size = image.width * ease(this.age / settings.heart.duration);
+          context.globalAlpha = 1 - this.age / settings.heart.duration;
           context.drawImage(
             image,
             this.position.x - size / 2,
@@ -145,59 +150,59 @@
        * ParticlePool class
        */
       var ParticlePool = (function () {
-        var particles,
+        var heart,
           firstActive = 0,
           firstFree = 0,
-          duration = settings.particles.duration;
+          duration = settings.heart.duration;
 
         function ParticlePool(length) {
           // create and populate particle pool
-          particles = new Array(length);
-          for (var i = 0; i < particles.length; i++)
-            particles[i] = new Particle();
+          heart = new Array(length);
+          for (var i = 0; i < heart.length; i++)
+            heart[i] = new Particle();
         }
         ParticlePool.prototype.add = function (x, y, dx, dy) {
-          particles[firstFree].initialize(x, y, dx, dy);
+          heart[firstFree].initialize(x, y, dx, dy);
 
           // handle circular queue
           firstFree++;
-          if (firstFree == particles.length) firstFree = 0;
+          if (firstFree == heart.length) firstFree = 0;
           if (firstActive == firstFree) firstActive++;
-          if (firstActive == particles.length) firstActive = 0;
+          if (firstActive == heart.length) firstActive = 0;
         };
         ParticlePool.prototype.update = function (deltaTime) {
           var i;
 
-          // update active particles
+          // update active heart
           if (firstActive < firstFree) {
             for (i = firstActive; i < firstFree; i++)
-              particles[i].update(deltaTime);
+              heart[i].update(deltaTime);
           }
           if (firstFree < firstActive) {
-            for (i = firstActive; i < particles.length; i++)
-              particles[i].update(deltaTime);
-            for (i = 0; i < firstFree; i++) particles[i].update(deltaTime);
+            for (i = firstActive; i < heart.length; i++)
+              heart[i].update(deltaTime);
+            for (i = 0; i < firstFree; i++) heart[i].update(deltaTime);
           }
 
-          // remove inactive particles
+          // remove inactive heart
           while (
-            particles[firstActive].age >= duration &&
+            heart[firstActive].age >= duration &&
             firstActive != firstFree
           ) {
             firstActive++;
-            if (firstActive == particles.length) firstActive = 0;
+            if (firstActive == heart.length) firstActive = 0;
           }
         };
         ParticlePool.prototype.draw = function (context, image) {
-          // draw active particles
+          // draw active heart
           if (firstActive < firstFree) {
             for (i = firstActive; i < firstFree; i++)
-              particles[i].draw(context, image);
+              heart[i].draw(context, image);
           }
           if (firstFree < firstActive) {
-            for (i = firstActive; i < particles.length; i++)
-              particles[i].draw(context, image);
-            for (i = 0; i < firstFree; i++) particles[i].draw(context, image);
+            for (i = firstActive; i < heart.length; i++)
+              heart[i].draw(context, image);
+            for (i = 0; i < firstFree; i++) heart[i].draw(context, image);
           }
         };
         return ParticlePool;
@@ -208,9 +213,9 @@
        */
       (function (canvas) {
         var context = canvas.getContext("2d"),
-          particles = new ParticlePool(settings.particles.length),
+          heart = new ParticlePool(settings.heart.length),
           particleRate =
-            settings.particles.length / settings.particles.duration, // particles/sec
+            settings.heart.length / settings.heart.duration, // heart/sec
           time;
 
         // get point on heart with -PI <= t <= PI
@@ -227,19 +232,17 @@
 
         // creating the particle image using a dummy canvas
         var image = (function () {
-          var canvas = document.createElement("canvas"),
-            context = canvas.getContext("2d");
-          canvas.width = settings.particles.size;
-          canvas.height = settings.particles.size;
+          var canvas = document.createElement("canvas");
+          var context = canvas.getContext("2d");
+          canvas.width = settings.heart.size;
+          canvas.height = settings.heart.size;
           // helper function to create the path
           function to(t) {
             var point = pointOnHeart(t);
-            point.x =
-              settings.particles.size / 2 +
-              (point.x * settings.particles.size) / 350;
-            point.y =
-              settings.particles.size / 2 -
-              (point.y * settings.particles.size) / 350;
+            point.x = settings.heart.size / 2 +
+              (point.x * settings.heart.size) / 350;
+            point.y = settings.heart.size / 2 -
+              (point.y * settings.heart.size) / 350;
             return point;
           }
           // create the path
@@ -254,7 +257,7 @@
           }
           context.closePath();
           // create the fill
-          context.fillStyle = "#ea80b0";
+          context.fillStyle = settings.heart.color;
           context.fill();
           // create the image
           var image = new Image();
@@ -275,12 +278,12 @@
           // clear canvas
           context.clearRect(0, 0, canvas.width, canvas.height);
 
-          // create new particles
+          // create new heart
           var amount = particleRate * deltaTime;
           for (var i = 0; i < amount; i++) {
             var pos = pointOnHeart(Math.PI - 2 * Math.PI * Math.random());
-            var dir = pos.clone().length(settings.particles.velocity);
-            particles.add(
+            var dir = pos.clone().length(settings.heart.velocity);
+            heart.add(
               canvas.width / 2 + pos.x,
               canvas.height / 2 - pos.y,
               dir.x,
@@ -288,9 +291,9 @@
             );
           }
 
-          // update and draw particles
-          particles.update(deltaTime);
-          particles.draw(context, image);
+          // update and draw heart
+          heart.update(deltaTime);
+          heart.draw(context, image);
         }
 
         // handle (re-)sizing of the canvas
@@ -305,7 +308,21 @@
           onResize();
           render();
         }, 10);
-      })(document.getElementById("pinkboard"));
+      })(document.getElementById("heart"));
+
+      (function (canvas) {
+        var context = canvas.getContext("2d");
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        var x = canvas.width / 2;
+        var y = canvas.height / 2;
+        context.textAlign = 'center';
+        context.font = settings.text.font;
+        context.fillStyle = settings.text.color;
+        context.fillText(settings.text.content , x, y);
+      })(document.getElementById("text"));
+
+      
     </script>
 <!-- self create by LTP, fix viewport on mobile -->
 </html>
