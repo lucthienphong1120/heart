@@ -7,7 +7,7 @@ CANVAS_HEIGHT = 480
 CANVAS_CENTER_X = CANVAS_WIDTH / 2 
 CANVAS_CENTER_Y = CANVAS_HEIGHT / 2 
 IMAGE_ENLARGE = 11 
-HEART_COLOR = "#f0afe4" 
+HEART_COLOR = "#f10706" 
 
 
 def heart_function(t, shrink_ratio: float = IMAGE_ENLARGE):
