@@ -1,7 +1,7 @@
 # heart
 "THẮP SÁNG ANH, SƯỞI ẤM EM"
 
-3 phiên bản code trái tim:
+3 phiên bản code trái tim hot nhất:
 + https://ltp110.tk/heart/index.html
 + https://ltp110.tk/heart/index2.html
 + https://ltp110.tk/heart/index3.html
