@@ -1,9 +1,10 @@
 # heart
 "THẮP SÁNG ANH, SƯỞI ẤM EM"
 
-https://ltp110.tk/heart/index.html
-
-https://ltp110.tk/heart/index2.html
+3 phiên bản code trái tim:
++ https://ltp110.tk/heart/index.html
++ https://ltp110.tk/heart/index2.html
++ https://ltp110.tk/heart/index3.html
 
 NETIZEN TRUNG ĐUA NHAU ĐU TREND TẠO HÌNH TRÁI TIM BẰNG MÃ CODE GIỐNG THỦ KHOA LÝ TRONG “THẮP SÁNG ANH, SƯỞI ẤM EM”
 
