@@ -2,9 +2,9 @@
 "THẮP SÁNG ANH, SƯỞI ẤM EM"
 
 3 phiên bản code trái tim hot nhất:
-+ https://ltp110.tk/heart/index.html
-+ https://ltp110.tk/heart/index2.html
-+ https://ltp110.tk/heart/index3.html
++ [ver 1](./index.html)
++ [ver 2](./index2.html)
++ [ver 3](./index3.html)
 
 NETIZEN TRUNG ĐUA NHAU ĐU TREND TẠO HÌNH TRÁI TIM BẰNG MÃ CODE GIỐNG THỦ KHOA LÝ TRONG “THẮP SÁNG ANH, SƯỞI ẤM EM”
 
