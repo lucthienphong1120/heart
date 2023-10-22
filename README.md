@@ -5,6 +5,7 @@
 + [ver 1](./index.html)
 + [ver 2](./index2.html)
 + [ver 3](./index3.html)
++ [python](./heart.py)
 
 NETIZEN TRUNG ĐUA NHAU ĐU TREND TẠO HÌNH TRÁI TIM BẰNG MÃ CODE GIỐNG THỦ KHOA LÝ TRONG “THẮP SÁNG ANH, SƯỞI ẤM EM”
 
